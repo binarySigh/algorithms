@@ -10,6 +10,12 @@ abstract class BinarySearchTree<T> {
     protected BinarySearchTree left;
     protected BinarySearchTree right;
 
+    public BinarySearchTree(T t) {
+        this.val = t;
+        this.left = null;
+        this.right = null;
+    }
+
     /**
      * 中序遍历
      */

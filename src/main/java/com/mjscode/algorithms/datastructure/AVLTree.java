@@ -42,7 +42,7 @@ public class AVLTree<T> {
             pre = cur;
             stack.push(pre);
             flag = getNextPosition(cur, t);
-            cur = flag > 0 ? cur.left : cur.right;
+            cur = flag > 0 ? (AVLNode)cur.left : (AVLNode)cur.right;
         }
         if(flag > 0){
             pre.left = add;
@@ -84,7 +84,7 @@ public class AVLTree<T> {
                 return deleted;
             } else {
                 //将删除节点 父节点的对应指针置空
-                flag = getNextPosition(delFather, cur.val);
+                flag = getNextPosition(delFather, (T)cur.val);
                 if(flag > 0){
                     delFather.left = null;
                 } else {
@@ -94,11 +94,11 @@ public class AVLTree<T> {
         } else if(deleted.right != null){
             // 右子树不为空，找后继节点顶替待删除节点
             pre = deleted;
-            cur = pre.right;
+            cur = (AVLNode)pre.right;
             while(cur.left != null){
                 pre = cur;
                 reHeightNodes.push(pre);
-                cur = cur.left;
+                cur = (AVLNode)cur.left;
             }
             if(pre != deleted) {
                 // 找到的后继节点不是 待删除节点的右子节点
@@ -119,7 +119,7 @@ public class AVLTree<T> {
             }
         } else {
             // 如果待删除节点整棵右子树为空，则直接用左子树顶替自己
-            cur = deleted.left;
+            cur = (AVLNode)deleted.left;
         }
         // 将cur 压入 pathNodes，以便遍历pathNodes完成整条路径上的 rebalance
         // 这里顶替上来的新节点和delFather之间的关系会在maintain中重新串联好，因此这里只把顶替节点压入pathNodes即可
@@ -155,7 +155,7 @@ public class AVLTree<T> {
             if(flag == 0){
                 return stack;
             }
-            cur = flag > 0 ? cur.left : cur.right;
+            cur = flag > 0 ? (AVLNode)cur.left : (AVLNode)cur.right;
         }
         return null;
     }
@@ -177,7 +177,7 @@ public class AVLTree<T> {
             if(flag == 0){
                 return true;
             }
-            cur = flag > 0 ? cur.left : cur.right;
+            cur = flag > 0 ? (AVLNode)cur.left : (AVLNode)cur.right;
         }
         return false;
     }
@@ -211,7 +211,7 @@ public class AVLTree<T> {
     private int getNextPosition(AVLNode cur, T t){
         int flag = 0;
         if(comparator != null){
-            flag = comparator.compare(cur.val, t);
+            flag = comparator.compare((T)cur.val, t);
         } else {
             Comparable<? super T> key = (Comparable<? super T>) cur.val;
             flag = key.compareTo(t);
@@ -261,7 +261,7 @@ public class AVLTree<T> {
             root = newNode;
             return root;
         } else {
-            if(getNextPosition(father, newNode.val) > 0){
+            if(getNextPosition(father, (T)newNode.val) > 0){
                 father.left = newNode;
             } else {
                 father.right = newNode;
@@ -275,12 +275,12 @@ public class AVLTree<T> {
      * @param node
      * @return
      */
-    private AVLNode leftRotate(AVLNode node){
-        AVLNode rightSon = node.right;
-        AVLNode tmp = rightSon.left;
+    private AVLNode leftRotate(BinarySearchTree node){
+        AVLNode rightSon = (AVLNode)node.right;
+        AVLNode tmp = (AVLNode)rightSon.left;
         rightSon.left = node;
         node.right = tmp;
-        node.height = getHeight(node);
+        ((AVLNode)node).height = getHeight(node);
         rightSon.height = getHeight(rightSon);
         return rightSon;
     }
@@ -290,12 +290,12 @@ public class AVLTree<T> {
      * @param node
      * @return
      */
-    private AVLNode rightRotate(AVLNode node){
-        AVLNode leftSon = node.left;
-        AVLNode tmp = leftSon.right;
+    private AVLNode rightRotate(BinarySearchTree node){
+        AVLNode leftSon = (AVLNode)node.left;
+        AVLNode tmp = (AVLNode)leftSon.right;
         leftSon.right = node;
         node.left = tmp;
-        node.height = getHeight(node);
+        ((AVLNode)node).height = getHeight(node);
         leftSon.height = getHeight(leftSon);
         return leftSon;
     }
@@ -305,25 +305,20 @@ public class AVLTree<T> {
      * @param node
      * @return
      */
-    private int getHeight(AVLNode node){
+    private int getHeight(BinarySearchTree node){
         if(node == null){
             return 0;
         }
-        int leftHeight = node.left != null ? node.left.height : 0;
-        int rightHeight = node.right != null ? node.right.height : 0;
+        int leftHeight = node.left != null ? ((AVLNode)node.left).height : 0;
+        int rightHeight = node.right != null ? ((AVLNode)node.right).height : 0;
         return leftHeight >= rightHeight ? leftHeight + 1 : rightHeight + 1;
     }
 
     private class AVLNode extends BinarySearchTree{
-        private T val;
-        private AVLNode left;
-        private AVLNode right;
         private int height;
 
         private AVLNode(T t){
-            val = t;
-            left = null;
-            right = null;
+            super(t);
             height = 1;
         }
 

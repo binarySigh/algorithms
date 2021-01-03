@@ -156,13 +156,15 @@ public class BinaryTree {
     public static String showBinarySearchTree(BinarySearchTree root) {
         String str = "";
         if(root == null){
-            return "";
+            return null;
         } else if(root.left == null && root.right == null){
             return String.valueOf(root.val);
         }
         String left = showBinarySearchTree(root.left);
+        left = left != null ? left + "," : "";
         String right = showBinarySearchTree(root.right);
-        str = left + "," + root.val + right;
+        right = right != null ? "," +right : "";
+        str = left + root.val + right;
         return str;
     }
 }

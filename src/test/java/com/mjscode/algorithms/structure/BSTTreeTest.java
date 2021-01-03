@@ -24,10 +24,10 @@ public class BSTTreeTest {
         tree.add(19);
         tree.add(18);
         tree.add(20);
-        System.out.println(BinaryTree.showBinarySearchTree(tree.root()));
+        System.out.println(tree.getInOrder());
         System.out.println(tree.contains(23));
         System.out.println(tree.contains(17));
         tree.remove(12);
-        System.out.println(BinaryTree.showBinarySearchTree(tree.root()));
+        System.out.println(tree.getInOrder());
     }
 }
