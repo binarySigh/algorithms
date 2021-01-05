@@ -2,6 +2,7 @@ package com.mjscode.algorithms.structure;
 
 import com.mjscode.algorithms.datastructure.AVLTree;
 import com.mjscode.algorithms.datastructure.BinaryTree;
+import com.mjscode.algorithms.datastructure.SizeBalancedTree;
 import org.junit.Test;
 
 public class BSTTreeTest {
@@ -29,5 +30,21 @@ public class BSTTreeTest {
         System.out.println(tree.contains(17));
         tree.remove(12);
         System.out.println(tree.getInOrder());
+    }
+
+    @Test
+    public void SBTtest(){
+        SizeBalancedTree<Integer> tree = new SizeBalancedTree<>();
+        tree.add(20);
+        tree.add(8);
+        tree.add(12);
+        tree.add(3);
+        tree.add(5);
+        tree.add(1);
+        tree.add(25);
+        tree.add(22);
+        tree.add(28);
+        System.out.println(tree.isContains(28));
+        tree.add(6);
     }
 }
