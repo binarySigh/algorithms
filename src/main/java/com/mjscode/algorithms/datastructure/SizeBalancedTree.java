@@ -20,7 +20,6 @@ public class SizeBalancedTree<T> {
         this.comparator = comparator;
     }
 
-
     public SBTNode add(T t){
         if(root == null){
             root = new SBTNode(t);
@@ -50,6 +49,10 @@ public class SizeBalancedTree<T> {
             maintain(cur, pathNodes.isEmpty() ? null : pathNodes.peek());
         }
         return root;
+    }
+
+    public void remove(T t){
+
     }
 
     /**
@@ -172,15 +175,15 @@ public class SizeBalancedTree<T> {
      * @param t
      * @return
      */
-    private Queue<SBTNode> findPath(T t){
+    private Stack<SBTNode> findPath(T t){
         if(root == null || t == null){
             return null;
         }
-        Queue<SBTNode> pathNodes = new LinkedList<>();
+        Stack<SBTNode> pathNodes = new Stack<>();
         SBTNode node = root;
         int flag = 0;
         while(node != null){
-            pathNodes.add(node);
+            pathNodes.push(node);
             flag = compareTo(node, t);
             if(flag > 0){
                 node = (SBTNode)node.left;
