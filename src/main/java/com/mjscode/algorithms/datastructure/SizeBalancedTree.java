@@ -1,8 +1,6 @@
 package com.mjscode.algorithms.datastructure;
 
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
