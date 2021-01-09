@@ -50,7 +50,12 @@ public class SizeBalancedTree<T> {
     }
 
     public void remove(T t){
-
+        Stack<SBTNode> pathNodes = findPath(t);
+        if(pathNodes.isEmpty() || compareTo(pathNodes.peek(), t) != 0){
+            //整棵树为空，或者树中没有t元素的节点
+            System.out.println("Element not exists!");
+            return;
+        }
     }
 
     /**

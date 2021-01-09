@@ -18,9 +18,8 @@ public class InsertionSort {
             System.out.println("输入数组为空或长度不满足排序要求!");
             return null;
         } else {
-            int tmp = 0;
             for (int i = 1; i < arr.length; i++) {
-                for (int j = i - 1; j > 0 && arr[j] > arr[j + 1]; j--) {
+                for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
                     Swap2(arr, j, j + 1);
                 }
             }

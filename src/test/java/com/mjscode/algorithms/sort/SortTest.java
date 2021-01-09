@@ -8,7 +8,7 @@ public class SortTest {
 
     @Test
     public void inertionSortTest() {
-        int[] arr = {1,2,4,3,6,3,2,7,13,9,8,10,22,54,32,41};
+        int[] arr = {2,1,4,3,6,3,2,7,13,9,8,10,22,54,32,41};
 
         ArrayUtils.showArray(arr);
         InsertionSort.sort(arr);
