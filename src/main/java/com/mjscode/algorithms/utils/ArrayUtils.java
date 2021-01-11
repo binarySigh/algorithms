@@ -46,4 +46,25 @@ public class ArrayUtils {
         }
         return flag;
     }
+
+    /**
+     * 按要求生成随机整型数组<BR/>
+     *  如果 negative == true,则元素范围 [-range，range]<BR/>
+     *  如果 negative == false,则元素范围 [0，range]<BR/>
+     * @param range 数组元素值范围
+     * @param length 数组长度
+     * @param negative 是否包含负数
+     * @return
+     */
+    public static int[] generateArray(int range, int length, boolean negative){
+        int[] arr = new int[length];
+        for(int i = 0; i < length; i++){
+            if(!negative) {
+                arr[i] = (int)(Math.random() * range + 1);
+            } else{
+                arr[i] = (int)(Math.random() * range + 1) - (int)(Math.random() * range + 1);
+            }
+        }
+        return arr;
+    }
 }
