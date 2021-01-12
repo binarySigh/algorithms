@@ -60,9 +60,9 @@ public class ArrayUtils {
         int[] arr = new int[length];
         for(int i = 0; i < length; i++){
             if(!negative) {
-                arr[i] = (int)(Math.random() * range + 1);
+                arr[i] = (int)(Math.random() * (range + 1));
             } else{
-                arr[i] = (int)(Math.random() * range + 1) - (int)(Math.random() * range + 1);
+                arr[i] = (int)(Math.random() * (range + 1)) - (int)(Math.random() * (range + 1));
             }
         }
         return arr;
