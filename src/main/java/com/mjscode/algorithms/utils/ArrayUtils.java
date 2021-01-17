@@ -1,6 +1,7 @@
 package com.mjscode.algorithms.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -36,15 +37,34 @@ public class ArrayUtils {
             return flag;
         }
         Iterator<Integer> ite = list1.iterator();
+        ArrayList<Integer> copyOfList2 = copyArray(list2);
         while(ite.hasNext()){
-            if(!list2.remove(ite.next())) {
+            if(!copyOfList2.remove(ite.next())) {
                 return flag;
             }
         }
-        if(list2 == null || list2.size() == 0){
+        if(copyOfList2 == null || copyOfList2.size() == 0){
             flag = true;
         }
         return flag;
+    }
+
+    /**
+     * 对输入数组进行深度拷贝，并返回拷贝后的新数组
+     * @param list
+     * @return
+     */
+    private static ArrayList<Integer> copyArray(ArrayList<Integer> list) {
+        if(list == null || list.size() == 0){
+            return list == null ? null : new ArrayList<Integer>();
+        }
+        ArrayList<Integer> copy = new ArrayList<>(list.size());
+        int tmp = 0;
+        for(int i = 0; i < list.size(); i++){
+            tmp = list.get(i);
+            copy.set(i, tmp);
+        }
+        return copy;
     }
 
     /**
