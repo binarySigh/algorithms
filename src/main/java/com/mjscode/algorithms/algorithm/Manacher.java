@@ -3,7 +3,7 @@ package com.mjscode.algorithms.algorithm;
 /**
  * Manacher 算法实现。
  *      查找一个字符串中的最大回文子串
- *
+ *  应用见 leetcode包下 LC0005
  * @author binarySigh
  */
 public class Manacher {
