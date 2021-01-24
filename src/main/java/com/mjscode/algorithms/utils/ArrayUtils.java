@@ -27,6 +27,22 @@ public class ArrayUtils {
     }
 
     /**
+     * 数组打印
+     * @param list
+     */
+    public static void showArray(ArrayList list){
+        String result = "[";
+        for(int i = 0; i < list.size(); i++){
+            if(i != list.size() - 1){
+                result = result + String.valueOf(list.get(i)) + ",";
+            } else {
+                result = result + String.valueOf(list.get(i)) + "]";
+            }
+        }
+        System.out.println(result);
+    }
+
+    /**
      * 对输入的两个整型的ArrayList进行比较，看看所含元素是否相同<BR/>
      * 相同返回 true，不同返回false
      * @return
