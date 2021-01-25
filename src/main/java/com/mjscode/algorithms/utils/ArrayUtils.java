@@ -103,4 +103,21 @@ public class ArrayUtils {
         }
         return arr;
     }
+
+    /**
+     * 返回数组字符串
+     * @param arr
+     * @return
+     */
+    public static String getArray(int[] arr) {
+        String result = "[";
+        for(int i=0; i < arr.length; i++){
+            if(i != arr.length-1) {
+                result = result + String.valueOf(arr[i]) + ",";
+            } else {
+                result = result + String.valueOf(arr[i]) + "]";
+            }
+        }
+        return result;
+    }
 }
