@@ -259,6 +259,8 @@ public class LC0010_IsMatch {
     				if(isMatch) return true;
     			}
     			//如果用 j+2 位置与 i-s.length-1位置逐个匹配都匹配不上的话，再用j位置与s.length-1位置匹配，尝试是否匹配
+				// 这是为了防止 abcccd <-> .*s*f*h* 这样的情况。如果仅以j+2位置往后暴力匹配的话按照算法逻辑是肯定匹配不上的，
+				// 	而这个例子.*可以直接匹配到结尾d的位置，这样按照算法逻辑就能匹配上，所以这里j位置和s最后一个位置的匹配一定要加上
 				isMatch = process(s, p, s.length() - 1, j);
     		} else if(p.charAt(j) == s.charAt(i)){
     			//匹配串不是'.',但是匹配串当前位置和主串当前位置相同，同样暴力循环
