@@ -1,8 +1,5 @@
 package com.mjscode.algorithms.leetcode;
 
-import java.util.PriorityQueue;
-import java.util.TreeMap;
-
 /**
  * //给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
  * //
@@ -59,194 +56,231 @@ public class LC0010_IsMatch {
         System.out.println(c1 == c2);  // true
         System.out.println(c1 - 0);  // 97
         System.out.println(c1 == 97);  // true */
+    	/*String s = "mississippi";
+    	String p = "mis*is*p*";*/ //false
+    	/*String s = "mississippi";
+    	String p = "mis*is*p*.";*/ //false
+    	/*String s = "aaa";
+    	String p = "ab*ac*a";*/	//true
+    	/*String s = "a";
+    	String p = "ab*"; //true*/
+		/*String s = "ab";
+		String p = ".*..c*";*/  //true
+		/*String s = "";
+		String p = "c*";*/   //true
+		String s = "bcccccbaccccacaa";
+		String p = ".*bb*c*a*b*.*b*b*c*";   //true
+    	System.out.println(isMacthV1(s, p));
     }
 
     /**
-     *
-     * ASCII:
-     *   . : 46
-     *   * : 42
+     *动态规划解法
      * @param s
      * @param p
      * @return
      */
     public static boolean isMacth(String s, String p){
-        if((s == null && p == null) || ("".equals(s) && "".equals(p))){
-            return true;
-        }
-        if((s == null || p == null) || ("".equals(s) || "".equals(p))){
-            return false;
-        }
-        char[] str = s.toCharArray();
-        char[] pStr = p.toCharArray();
-        //辅助数组。sMax[i]表示str[]中以i位置字符往右查找，在不被打断的情况下最多有几个字符与他相同(不包括自己)
-        int[] sMax = new int[str.length];
-        int[] pMax = new int[pStr.length];
-        //遍历指针
-        int i = str.length - 2;
-        int j = pStr.length - 2;
-        // 当匹配串中出现“.*”时，用来记录最近一个“.*”通配符的下一个位置
-        // 防止出现这种情况："acbdjaabbadcfaabb" -  ".*aabb"
-        //   这时候i来到adc的a位置，j已经结束了，按照流程返回的是false，但实际上这两个串是匹配成功的；
-        //   因此这个时候要把j指针回退到a位置接着匹配
-        int indenxFlag = -1;
-        //填充辅助数组
-        for(; i >= 0 ; i--){
-            //看看i+1位置字符是否与i位置字符相同，相同则i位置长度就是i+1位置长度+1，否则就是0
-            sMax[i] = str[i] - str[i+1] == 0 ? sMax[i+1] + 1 : 0;
-        }
-        for(; j >= 0; j--){
-            //pMax[] 通配符辅助数组稍微麻烦一点，因为有特殊字符存在
-            // . 字符与正常字母一样统计，*一律给0
-            if(pStr[j] - 42 == 0){
-                pMax[j] = 0;
-            } else {
-                pMax[j] = pStr[j] - pStr[j] == 0 ? pMax[j+1] + 1 : 0;
-            }
-        }
-        i = 0; j = 0;
-        while(i < str.length && j < pStr.length){
-            //特别说明，本流程会严格控制不会让通配符指针指到*，所以大情况只会有两种：1.匹配到. ；2.匹配到a~z
-            if(pStr[j] - 46 == 0){ //当前匹配到.符号
-                if((j+1 < pStr.length) && (pStr[j + 1] - 42 == 0)){ //如果.后面接着的是*，特殊处理
-                    //如果.*已经是通配符结尾了，那么直接结束，认为匹配完成
-                    if(j+2 >= pStr.length){
-                        return true;
-                    }
-                    //如果.*后面还有其他字符，则继续分情况
-                    if(pStr[j+2] - 46 == 0){
-                        //如果j+2位置还是.(可能会有n个)那么就跳到这n个点的最后一个上，同时i也要跳相同的步幅
-                        j += pMax[j+2] + 2; // 这里步幅其实是pMax[j+2]，额外＋2是因为要额外跳过j+1位置的*
-                        i += pMax[j+2];
-                    } else {
-                        //如果j+2位置是a~z的字符，j跳到j+2位置
-                        j += 2;
-                        //i一直跳，跳到第一个满足以下条件的
-                        while((i < str.length) && (str[i] != pStr[j] || sMax[i] < pMax[j])){
-                            i++;
-                        }
-                    }
-                    //记录这个时候的j位置，方便后面匹配失败时给j指针回退
-                    indenxFlag = j;
-                } else {
-                    //只要后面不是*，就i,j++
-                    i++; j++;
-                }
-            } else { // 当前匹配到的是a~z
-                if(str[i] != pStr[j]){
-                    //如果两个字符不一样，那么检查j+1是不是*，如果是，那就直接j跳到j+2
-                    if(j+1 >= pStr.length){
-                        //j+1是越界位置，那么检查之前是否有过".*",如果有，就跳到当时的记录位置;如果没有就认为匹配失败
-                        if(indenxFlag >= 0){
-                            j = indenxFlag;
-                            continue;
-                        } else {
-                            return false;
-                        }
-                    }
-                    //检查j+1是否为*
-                    if(pStr[j] - 42 == 0){
-                        //后面接的是*,说明当前可能是 aac,a*aac的情况，即*是0次，那么直接跳到j+2位置
-                        j += 2;
-                    } else {
-                        //当前匹配不同，后面也不是*
-                        // 先查看flag是否有过修改，如果有，j回退至修改位置；如果没有，认为匹配失败，返回false
-                        if(indenxFlag >= 0){
-                            j = indenxFlag;
-                            continue;
-                        } else {
-                            return false;
-                        }
-                    }
-                } else {
-                    if(sMax[i] == pMax[j]){  //两个字符相同，且两个字符长度也一样
-                        //认为这一段匹配成功，同时保证要跳出这一段
-                        i += sMax[i] + 1;
-                        j += pMax[j] + 1;
-                        //额外检查下一区域是否为*,如果是，那么j要额外再走一步；否则就不动。保证我们的大流程j不会遍历到*位置
-                        j += pStr[j] - 42 == 0 ? 1 : 0;
-                    } else if(sMax[i] < pMax[j]) { //两个字符相同，且原串该位置字符长度比匹配串还小
-                        // 先查看flag是否有过修改，如果有，j回退至修改位置；如果没有，认为匹配失败，返回false
-                        if(indenxFlag >= 0){
-                            j = indenxFlag;
-                            continue;
-                        } else {
-                            return false;
-                        }
-                    } else { //两个字符相同，且原串该位置字符长度比匹配串大
-                        //情况比较多，如：1. "aaaac"  -  "aac"
-                        //              2. "aaaac"  -  "aa"
-                        //              3. "aaaac"  -  "aa*c"
-                        //              4. "aaaac"  -  "aa*ac"(或者通配符是"aa*.c")
-                        //看匹配串区域外的字符是不是*
-                        if((j + pMax[j] + 1 >= pStr.length) || (pStr[j + pMax[j] + 1] - 42 != 0)){
-                            //对应情况2，越界
-                            //对应情况1，不越界的情况下,下一段字符也不为*
-                            // 先查看flag是否有过修改，如果有，j回退至修改位置；如果没有，认为匹配失败，返回false
-                            if(indenxFlag >= 0){
-                                j = indenxFlag;
-                                continue;
-                            } else {
-                                return false;
-                            }
-                        } else { //既不越界，匹配符下一段字符还是*
-                            //先把j跳到*前那个位置，同时i也跳相同步幅
-                            j += pMax[j];
-                            i += pMax[j];
-                            //检查*下一段是否还是 a（或者.）
-                            //检查此时的j+2是否越界  防止出现"aaaac"  -  "aa*"
-                            if(j+2 >= pStr.length){
-                                //如果真的越界，那么就让i直接跳出这一区域；让j来到越位位置
-                                //因为每次最外层while最后会执行检查操作，所以这里j直接跳到越位位置没关系
-                                j += 2;
-                                i += sMax[i] + 1; //是否应该让i跳出当前区域？
-                            } else { //不越位的情况
-                                if(pStr[j+2] - 46 == 0){
-                                    //不越位，但是*下一个字符是.。对应情况4 括号内的那种情况。需要单独处理
+    	// 直接返回易于辨识结果的输入
+		if(s == null && p == null) {
+			return true;
+		}
+		if(s == null || p == null) {
+			return false;
+		}
+		if("".equals(s)){
+			if("".equals(p)){
+				return true;
+			} else {
+				int j = 0;
+				while(j + 1 < p.length() && p.charAt(j + 1) == '*'){
+					j += 2;
+				}
+				if(j < p.length()) return false;
+				else return true;
+			}
+		}
+		if("".equals(p)){
+			if("".equals(s)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		//以下为正式算法流程
+        boolean[][] dp = new boolean[s.length()][p.length()];
+        
+        
+        return false;
+    }
 
-                                } else if(pStr[j+2] != pStr[j]){
-                                    //不越位，但是*下一个字符既不是.也不是a。对应情况3
-                                    // 先查看flag是否有过修改，如果有，j回退至修改位置；如果没有，认为匹配失败，返回false
-                                    if(indenxFlag >= 0){
-                                        j = indenxFlag;
-                                        continue;
-                                    } else {
-                                        return false;
-                                    }
-                                } else if(pStr[j+2] == pStr[j]){
-                                    //不越位，且*下一个位置是a，对应情况4. "aaaac"  -  "aa*ac"
-                                    //查看这个a的区域大小，如果≤此时原串中a的长度str[i],则两个串同时跳到本区域的最后一个字符
-                                    //即i跳到最后一个a的位置；j跳到*下面那段的最后一位(因为也有可能匹配串是"aa*aac")
-                                    if(pMax[j+2] <= sMax[i]){
-                                        //i,j都跳出自己当前字符所在区域
-                                        i += (sMax[i] + 1);
-                                        j += (2 + pMax[j+2] + 1);
-                                    } else {
-                                        //匹配串*后面那段长度 比 此时原串中剩余部分长度还长
-                                        // 先查看flag是否有过修改，如果有，j回退至修改位置；如果没有，认为匹配失败，返回false
-                                        if(indenxFlag >= 0){
-                                            j = indenxFlag;
-                                            continue;
-                                        } else {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            //如果此时j已到结尾，而i还没到，那么检查flag是否有效，
-            //         如果有效，j回退至flag位置，接着匹配；如果无效，则什么也不做
-            if(j >= pStr.length && indenxFlag >= 0){
-                j = indenxFlag;
-            }
-        }
-        //如果跳出循环时，还有一个串没匹配完，就认为匹配失败。
-        if(i < str.length || j < pStr.length){
-            return false;
-        }
-        return true;
+	/**
+	 * 第一种解法：直接递归回溯
+	 * 执行结果：通过
+	 * 		执行用时：35 ms, 在所有 Java 提交中击败了 17.78% 的用户
+	 * 		内存消耗：38.8 MB, 在所有 Java 提交中击败了 12.16% 的用户
+	 * @param s
+	 * @param p
+	 * @return
+	 */
+	public static boolean isMacthV1(String s, String p){
+		if(s == null && p == null) {
+			return true;
+		}
+		if(s == null || p == null) {
+			return false;
+		}
+		if("".equals(s)){
+			if("".equals(p)){
+				return true;
+			} else {
+				int j = 0;
+				while(j + 1 < p.length() && p.charAt(j + 1) == '*'){
+					j += 2;
+				}
+				if(j < p.length()) return false;
+				else return true;
+			}
+		}
+		if("".equals(p)){
+			if("".equals(s)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return process(s, p, 0, 0);
+	}
+    
+    /**
+     * 递归方法。该方法中仅做递归匹配，原始输入字符串是否合法需要由上层调用者来判断</BR>
+     * 	默认i,j位置之前的部分已经完全匹配上；</BR>
+     * 	流程中严格控制j不会来到'*'字符所在位置</BR>
+     * @param s 被匹配串
+     * @param p 匹配串（可能含通配符的那个）
+     * @param i 被匹配串当前到达的位置
+     * @param j	匹配串当前到达的位置
+     * @return
+     */
+    public static boolean process(String s, String p, int i, int j){
+    	//base case
+    	if(p.charAt(j) == '*'){
+    		//该流程里是严格控制j位置不会走到*字符所在位置的，如果还是发现j来到了*字符，
+    		//	那么一定是匹配串中出现了以*字符开头（"*xxx"）或者连续存在两个*（"xxx**xxx"）的非法情况
+    		//	这两种非法情况都统一认为匹配失败
+    		return false;
+    	}
+    	if(i == s.length() - 1){
+    		//主串当前到了最后一位字符
+    		if(j == p.length() - 1){
+    			if(p.charAt(j) == '.' || s.charAt(i) == p.charAt(j)){
+	    			//主串和匹配串都来到了最后一位，且两者最后一位按照规则能匹配
+	    			return true;
+    			} else {
+    				//主串和匹配串都来到了最后一位，且两者最后一位按照规则不能匹配
+    				return false;
+    			}
+    		} else {
+				//匹配串还没到最后一位
+				if(p.charAt(j + 1) == '*'){
+					// 防止主串当前最后一位a；而匹配串剩余的部分是 a*b*c*，或者 a*b*c*c这两种情况
+					boolean isMatch = false;
+					while(j + 1 < p.length() && p.charAt(j + 1) == '*'){
+						if(p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') isMatch = true;
+						j += 2;
+					}
+					if(isMatch && j == p.length()){
+						//对应 a;   a*b*c*这种情况
+						return true;
+					} else if(j == p.length() - 1){
+						//对应 a;   a*b*c*c这种情况
+						if(p.charAt(j) == s.charAt(i) || p.charAt(j) == '.') return true;
+						else return false;
+					} else {
+						//对应其他情况，比如a <-> a*b*c*cb*asd / a <-> s*d*c*等情况
+						return false;
+					}
+				} else {
+					//匹配串不是最后一位，且匹配串下一位也不是'*'
+					if(s.charAt(i) != p.charAt(j) && p.charAt(j) != '.'){
+						//对应: 主串 - a,匹配串 - ba*c*;认为匹配失败
+						return false;
+					} else {
+						//对应：主串 - a,匹配串 - ab*c* / abb*等两种情况
+						//策略就是往下一位把所有 x* 的都排除掉之后看匹配串有没有冗余，有就说明不匹配，否则说明能匹配
+						int t = j + 1;
+						while(t + 1 < p.length() && p.charAt(t + 1) == '*'){
+							t += 2;
+						}
+						if(t == p.length() &&
+								(p.charAt(j) == '.' || p.charAt(j) == s.charAt(i))){
+							return true;
+						} else {
+							return false;
+						}
+					}
+				}
+    		}
+    	}
+    	if(j == p.length() - 1){
+    		//匹配串率先走完，则认为匹配失败
+    		return false;
+    	}
+    	if(j == p.length() - 2 && p.charAt(j + 1) == '*'){
+    		//当前匹配串来到倒数第二位，且下一位字符是'*'
+    		if(p.charAt(j) == '.'){
+    			//当前字符是'.'，认为匹配成功
+    			return true;
+    		} else if(p.charAt(j) == s.charAt(i)){
+    			return process(s, p, i + 1, j);
+    		} else {
+    			return false;
+    		}
+    	}
+    	//下面是process主流程
+    	//由于base case严格控制了两个串尾字符的情况，所以这里可以放心地使用  i+1 和 j+1,无需担心越界
+    	boolean isMatch = false;
+    	if(p.charAt(j + 1) != '*'){
+    		//匹配串下一个字符不越界，且不是*
+    		if(p.charAt(j) == '.' || p.charAt(j) == s.charAt(i)){
+    			isMatch = process(s, p, i + 1, j + 1);
+    			if(isMatch) return isMatch;
+    		} else {
+    			return false;
+    		}
+    	} else if(p.charAt(j + 1) == '*'){
+    		//匹配串下一个字符是*
+    		// 这里注意因为'*'是可以匹配0的，所以递归调用一定要从i开始，而不是i+1
+    		if(p.charAt(j) == '.'){
+    			//匹配串当前是'.'，暴力逐位匹配
+    			for(; i < s.length(); i++){
+    				isMatch = process(s, p, i, j + 2);
+    				if(isMatch) return true;
+    			}
+    			//如果用 j+2 位置与 i-s.length-1位置逐个匹配都匹配不上的话，再用j位置与s.length-1位置匹配，尝试是否匹配
+				isMatch = process(s, p, s.length() - 1, j);
+    		} else if(p.charAt(j) == s.charAt(i)){
+    			//匹配串不是'.',但是匹配串当前位置和主串当前位置相同，同样暴力循环
+    			//如果主串当前处在一个连续相同的字符区，那么获取这一块相同字符区的右边界
+    			int t = i;
+    			while(s.charAt(t) == s.charAt(i)){
+    				//如果t已经来到最后一位，那么直接break，防止t越界
+    				if(t == s.length() - 1) break;
+    				//否则t++
+    				t++;
+    			}
+    			//与当前是'.'的策略不同的是，这里暴力循环最多只能循环到主串当前重复区的下一位
+    			for(; i <= t; i++){
+    				isMatch = process(s, p, i, j + 2);
+    				if(isMatch) return true;
+    			}
+    		} else {
+    			//匹配串既不是'.',也跟主串当前位置不相同
+    			isMatch = process(s, p, i, j + 2);
+    			if(isMatch) return true;
+    		}
+    	}
+    	return isMatch;
     }
 }
