@@ -31,6 +31,14 @@ public class SortTest {
     }
 
     @Test
+    public void quickSort(){
+        int[] arr = ArrayUtils.generateArray(100, 10, true);
+        ArrayUtils.showArray(arr);
+        QuickSort.quickSort(arr, 0, arr.length - 1);
+        ArrayUtils.showArray(arr);
+    }
+
+    @Test
     public void heapSortTest(){
         int[] arr = {2,1,51,23,41,99,102,72,15,33};
         //先将给定数组构建成堆
