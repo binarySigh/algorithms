@@ -72,7 +72,7 @@ public class ArrayUtils {
      */
     private static ArrayList<Integer> copyArray(ArrayList<Integer> list) {
         if(list == null || list.size() == 0){
-            return list == null ? null : new ArrayList<Integer>();
+            return list == null ? null : new ArrayList<>();
         }
         ArrayList<Integer> copy = new ArrayList<>(list.size());
         int tmp = 0;
@@ -105,7 +105,7 @@ public class ArrayUtils {
     }
 
     /**
-     * 返回数组字符串
+     * 字符串形式打印数组
      * @param arr
      * @return
      */
