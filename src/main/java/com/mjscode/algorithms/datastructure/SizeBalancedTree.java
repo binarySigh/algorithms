@@ -49,13 +49,60 @@ public class SizeBalancedTree<T> {
         return root;
     }
 
-    public void remove(T t){
+    public SBTNode remove(T t){
         Stack<SBTNode> pathNodes = findPath(t);
         if(pathNodes.isEmpty() || compareTo(pathNodes.peek(), t) != 0){
             //整棵树为空，或者树中没有t元素的节点
             System.out.println("Element not exists!");
-            return;
+            return null;
         }
+        SBTNode delNode = pathNodes.pop();
+        Stack<SBTNode> nextPaths = findNext(delNode);
+        if(nextPaths.isEmpty()){
+            //待删除节点没有右子树，或者待删除节点根本就是叶子节点
+            if(delNode.left != null){
+                //待删除节点只是没有右子树。将其左子节点压栈，等待后续maintain过程维护好树关系和平衡
+                pathNodes.push((SBTNode) delNode.left);
+            } else {
+                //待删除节点恰好是叶节点
+                if(pathNodes.isEmpty()){
+                    //待删除节点恰好也是头节点。则说明该树当前仅有一个待删除节点
+                    this.root = null;
+                    return delNode;
+                } else {
+                    //待删除节点不是头节点，那就直接删除，将其父节点相应位置指针置空
+                    if(pathNodes.peek().left == delNode)
+                        pathNodes.peek().left = null;
+                    else
+                        pathNodes.peek().right = null;
+                }
+            }
+        } else if(nextPaths.peek() == delNode.right){
+            //如果找到的后继节点就是待删除节点的右子节点，那么直接顶上然后rebalance即可
+            nextPaths.peek().left = delNode.left;
+            //将顶上来的节点压回去，以便后续平衡性调整
+            pathNodes.push(nextPaths.pop());
+        } else {
+            SBTNode next = nextPaths.pop();
+            nextPaths.peek().left = next.right;
+            next.right = delNode.right;
+            next.left = delNode.left;
+            pathNodes.push(next);
+        }
+        //对沿途受到影响的节点从下至上逐一进行平衡性检查和调整
+        SBTNode cur = null;
+        while(!nextPaths.isEmpty()){
+            cur = nextPaths.pop();
+            maintain(cur, nextPaths.isEmpty() ? (pathNodes.isEmpty() ? null : pathNodes.peek()) : nextPaths.peek());
+        }
+        while(!pathNodes.isEmpty()){
+            cur = pathNodes.pop();
+            maintain(cur, pathNodes.isEmpty() ? null : pathNodes.peek());
+        }
+        //解除被删除节点的引用关系,方便垃圾回收
+        delNode.right = null;
+        delNode.left = null;
+        return delNode;
     }
 
     /**
@@ -170,6 +217,26 @@ public class SizeBalancedTree<T> {
         node.nodesCount = getCounts(node);
         leftSon.nodesCount = getCounts(leftSon);
         return leftSon;
+    }
+
+    /**
+     * 寻找删除结节点的后继节点（这里是指以删除节点为头的子树中的后继）<BR/>
+     * 结果中包括后继节点，但不包括待删除节点<BR/>
+     * @param node
+     * @return
+     */
+    private Stack<SBTNode> findNext(SBTNode node){
+        Stack<SBTNode> nextPaths = new Stack<>();
+        if(node.right == null){
+            return nextPaths;
+        }
+        SBTNode cur = (SBTNode)node.right;
+        nextPaths.push(cur);
+        while(cur.left != null){
+            cur = (SBTNode)cur.left;
+            nextPaths.push(cur);
+        }
+        return nextPaths;
     }
 
     /**
