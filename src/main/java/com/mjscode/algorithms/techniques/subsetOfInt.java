@@ -13,7 +13,7 @@ public class subsetOfInt {
     }
 
     /**
-     * 列举 i 的所有二进制子集,包括全集（即 i本身）和空集（也即 0）
+     * 列举整型数 i 的所有二进制子集,包括全集（即 i本身）和空集（也即 0）
      * @param i
      */
     public static void listSubsets(int i){

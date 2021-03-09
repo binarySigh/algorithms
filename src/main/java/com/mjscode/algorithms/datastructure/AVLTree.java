@@ -41,7 +41,7 @@ public class AVLTree<T> {
         while(cur != null){
             pre = cur;
             stack.push(pre);
-            flag = getNextPosition(cur, t);
+            flag = compareTo(cur, t);
             cur = flag > 0 ? (AVLNode)cur.left : (AVLNode)cur.right;
         }
         if(flag > 0){
@@ -84,7 +84,7 @@ public class AVLTree<T> {
                 return deleted;
             } else {
                 //将删除节点 父节点的对应指针置空
-                flag = getNextPosition(delFather, (T)cur.val);
+                flag = compareTo(delFather, (T)cur.val);
                 if(flag > 0){
                     delFather.left = null;
                 } else {
@@ -150,7 +150,7 @@ public class AVLTree<T> {
         AVLNode cur = root;
         int flag = 0;
         while(cur != null){
-            flag = getNextPosition(cur, t);
+            flag = compareTo(cur, t);
             stack.push(cur);
             if(flag == 0){
                 return stack;
@@ -173,7 +173,7 @@ public class AVLTree<T> {
         AVLNode cur = root;
         int flag = 0;
         while(cur != null){
-            flag = getNextPosition(cur, t);
+            flag = compareTo(cur, t);
             if(flag == 0){
                 return true;
             }
@@ -208,7 +208,7 @@ public class AVLTree<T> {
      * @param t 目标元素值
      * @return
      */
-    private int getNextPosition(AVLNode cur, T t){
+    private int compareTo(AVLNode cur, T t){
         int flag = 0;
         if(comparator != null){
             flag = comparator.compare((T)cur.val, t);
@@ -261,7 +261,7 @@ public class AVLTree<T> {
             root = newNode;
             return root;
         } else {
-            if(getNextPosition(father, (T)newNode.val) > 0){
+            if(compareTo(father, (T)newNode.val) > 0){
                 father.left = newNode;
             } else {
                 father.right = newNode;
