@@ -38,9 +38,12 @@ public class LC0224_Calculate {
         //String s = "(1+(4+5+2)-3)+(6+8)";
         //String s = "(1+(4+5+2)-3)";
         //String s = " 2-1 + 2 ";
-        String s = "(1+2) - (13 + (4 + 5 ) + (7 - 8))";
+        //String s = "(1+2) - (13 + (4 + 5 ) + (7 - 8))";
         //String s = "2147483647";
-        System.out.println(calculate(s));
+        //System.out.println(calculate(s));
+
+        String s2 = "3+2*200/10  - 20";
+        System.out.println(LC0227_calculate(s2));
     }
 
     /**
@@ -75,6 +78,52 @@ public class LC0224_Calculate {
                 }
             } else if(s.charAt(i) == '-' || s.charAt(i) == '+'){
                 positive = s.charAt(i) == '-' ? false : true;
+            }
+        }
+        return cur;
+    }
+
+    /**
+     * s中只含有 数字 和 + - * /    ，求计算结果
+     * 解答成功:
+     * 		执行耗时:29 ms,击败了18.79% 的Java用户
+     * 		内存消耗:39.3 MB,击败了45.86% 的Java用户
+     * @param s
+     * @return
+     */
+    public static int LC0227_calculate(String s) {
+        //这里的cur用来记录当前优先级 计算积累下来的商/积
+        int cur = 1;
+        //当前得到的数字
+        int curNum = 0;
+        //上一个符号是否为*
+        boolean multi = true;
+        Stack<Prefix> stack = new Stack<>();
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '+' || s.charAt(i) == '-'){
+                //将前面可能没计算完的乘除计算完
+                cur = multi ? cur * curNum : cur / curNum;
+                if(!stack.isEmpty()){
+                    Prefix prefix = stack.pop();
+                    cur = prefix.flag ? prefix.preSum + cur : prefix.preSum - cur;
+                }
+                stack.push(new Prefix(cur, s.charAt(i) == '+' ? true : false));
+                cur = 1;
+                curNum = 0;
+                multi = true;
+            } else if(s.charAt(i) == '*' || s.charAt(i) == '/'){
+                cur = multi ? cur * curNum : cur / curNum;
+                multi = s.charAt(i) == '*' ? true : false;
+                curNum = 0;
+            } else if(s.charAt(i) >= 48 && s.charAt(i) <= 57){
+                curNum = curNum * 10 + s.charAt(i) - 48;
+            }
+            if(i == s.length() - 1){
+                cur = multi ? cur * curNum : cur / curNum;
+                if(!stack.isEmpty()){
+                    Prefix prefix = stack.pop();
+                    cur = prefix.flag ? prefix.preSum + cur : prefix.preSum - cur;
+                }
             }
         }
         return cur;
