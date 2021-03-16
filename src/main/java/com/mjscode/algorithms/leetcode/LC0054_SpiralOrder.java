@@ -35,15 +35,19 @@ public class LC0054_SpiralOrder {
         //int[][] matrix = new int[][]{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
         //int[][] matrix = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
         //int[][] matrix = new int[][]{{7},{9},{6}};
-        int[][] matrix = new int[][]{{7,9,6}};
+        /*int[][] matrix = new int[][]{{7,9,6}};
         List<Integer> list = spiralOrder(matrix);
-        ArrayUtils.showArray((ArrayList)list);
+        ArrayUtils.showArray((ArrayList)list);*/
+
+        //LC59测试用例
+        int n = 5;
+        ArrayUtils.printMatrix(LC0059_generateMatrix(n));
     }
 
     /**
      * 解答成功:
-     * 		执行耗时:0 ms,击败了100.00% 的Java用户
-     * 		内存消耗:36.2 MB,击败了99.60% 的Java用户
+     * 		执行耗时:0 ms,击败了100.00% 的Java用户<BR/>
+     * 		内存消耗:36.2 MB,击败了99.60% 的Java用户<BR/>
      * @param matrix
      * @return
      */
@@ -86,5 +90,46 @@ public class LC0054_SpiralOrder {
             x2--; y2--;
         }
         return list;
+    }
+
+    /**
+     * LC59螺旋矩阵Ⅱ：生成一个 n*n 的螺旋矩阵，并将此矩阵返回<BR/>
+     *解答成功:<BR/>
+     * 		执行耗时:0 ms,击败了100.00% 的Java用户<BR/>
+     * 		内存消耗:36.6 MB,击败了47.99% 的Java用户<BR/>
+     * @param n 范围 [1,20]
+     * @return
+     */
+    public static int[][] LC0059_generateMatrix(int n) {
+        if(n == 1){
+            return new int[][]{{1}};
+        }
+        int[][] matrix = new int[n][n];
+        int num = 1;
+        int x1 = 0;
+        int y1 = 0;
+        int x2 = n - 1;
+        int y2 = n - 1;
+        int i = 0, j = 0;
+        while(x1 <= x2 && y1 <= y2){
+            if(x1 == x2){
+                matrix[i][j] = num;
+            }
+            for(; j < y2; j++){
+                matrix[i][j] = num++;
+            }
+            for(; i < x2; i++){
+                matrix[i][j] = num++;
+            }
+            for(; j > x1; j--){
+                matrix[i][j] = num++;
+            }
+            for(; i > x1; i--){
+                matrix[i][j] = num++;
+            }
+            i = ++x1; j = ++y1;
+            x2--; y2--;
+        }
+        return matrix;
     }
 }
