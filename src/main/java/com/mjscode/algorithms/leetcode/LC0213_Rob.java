@@ -67,9 +67,9 @@ public class LC0213_Rob {
 
     /**
      * leetcode Accept
-     * 解答成功:
-     * 		执行耗时:1 ms,击败了5.84% 的Java用户
-     * 		内存消耗:35.8 MB,击败了51.47% 的Java用户
+     * 执行结果： 通过
+     * 执行用时： 1 ms , 在所有 Java 提交中击败了 100.00% 的用户
+     * 内存消耗： 36 MB , 在所有 Java 提交中击败了 25.85% 的用户
      * @param nums
      * @return
      */
