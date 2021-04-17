@@ -25,6 +25,7 @@ public class Trie {
         for(int i = 0; i <= word.length(); i++){
             if(i == word.length()){
                 cur.end++;
+                cur.pass++;
                 break;
             }
             int branch = word.charAt(i) - 'a';

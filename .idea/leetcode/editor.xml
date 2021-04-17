@@ -395,6 +395,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[180]连续出现的数字.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[180]连续出现的数字.java" />
+              <option name="questionId" value="180" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[187]重复的DNA序列.java">
           <value>
             <LeetcodeEditor>
@@ -1008,6 +1016,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[714]买卖股票的最佳时机含手续费.java" />
               <option name="questionId" value="714" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[71]简化路径.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[71]简化路径.java" />
+              <option name="questionId" value="71" />
             </LeetcodeEditor>
           </value>
         </entry>
