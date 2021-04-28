@@ -84,6 +84,7 @@ public class LC0051_SolveNQueens {
                 continue;
             }
             //对于之前已经摆好的皇后，一个个检查是否与当前行的皇后共斜线
+            // 共斜线的检查方法：如果两个点之间的行差和列差一样，说明两个点连线的斜率为1，也就是说这两个点共斜线
             boolean makeSense = true;
             for(int j = 0; j < curRow; j++){
                 if(Math.abs(i - post[j]) == Math.abs(curRow - j)){
