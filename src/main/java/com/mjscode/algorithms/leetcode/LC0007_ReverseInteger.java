@@ -21,9 +21,50 @@ public class LC0007_ReverseInteger {
         /*int num = -123;
         String str = String.valueOf(num);
         System.out.println(str);*/
-        System.out.println(reverse(1233336666));
+        /*System.out.println("max: " + Integer.MAX_VALUE);
+        System.out.println(reverse(214748364));*/
+        System.out.println("min: " + Integer.MIN_VALUE);
+        System.out.println(reverse(-1230));
     }
 
+    /**
+     * 解答成功:
+     * 		执行耗时:1 ms,击败了100.00% 的Java用户
+     * 		内存消耗:35.6 MB,击败了43.34% 的Java用户
+     * @param num
+     * @return
+     */
+    public static int reverse(int num){
+        if(num == 0){
+            return 0;
+        }
+        boolean flag = num > 0;
+        //去除尾部的0
+        while(num % 10 == 0){
+            num /= 10;
+        }
+        int cur = num % 10;
+        num /= 10;
+        //正常反转
+        if(flag){
+            while(num > 0){
+                if(cur > Integer.MAX_VALUE / 10.0D){
+                    return 0;
+                }
+                cur = (cur * 10) + num % 10;
+                num /= 10;
+            }
+        } else {
+            while(num < 0){
+                if(cur < Integer.MIN_VALUE / 10.0D){
+                    return 0;
+                }
+                cur = (cur * 10) + num % 10;
+                num /= 10;
+            }
+        }
+        return cur;
+    }
     /**
      * leetcode Accept
      * 解答成功:
@@ -33,7 +74,7 @@ public class LC0007_ReverseInteger {
      * @param num
      * @return
      */
-    public static int reverse(int num) {
+    public static int reversePre(int num) {
         //将整型数转成字符数组
         String str = String.valueOf(num);
         char[] ch = str.toCharArray();
