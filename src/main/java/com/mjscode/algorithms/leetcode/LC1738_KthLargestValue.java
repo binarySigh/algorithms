@@ -63,7 +63,7 @@ public class LC1738_KthLargestValue {
         for(int i = 0; i < 10_0000; i++){
             int m = 10, n = 10;
             int[][] matrix = getMatrix(m, n);
-            int k = (int)(Math.random() * 100) + 1;
+            int k = (int)(Math.random() * m * n) + 1;
             int result = kthLargestValue(matrix, k);
             int answer = compare(matrix, k);
             if(result != answer){
