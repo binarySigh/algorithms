@@ -128,10 +128,11 @@ public class ArrayUtils {
     public static void printMatrix(int[][] matrix){
         for(int i = 0; i < matrix.length; i++){
             for(int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j]);
+                /*System.out.print(matrix[i][j]);
                 if(j != matrix[0].length - 1){
                     System.out.print("\t");
-                }
+                }*/
+                System.out.printf("%-10d", matrix[i][j]);
             }
             System.out.print("\n");
         }
