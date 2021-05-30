@@ -75,6 +75,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1074]元素和为目标值的子矩阵数量.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1074]元素和为目标值的子矩阵数量.java" />
+              <option name="questionId" value="1145" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[107]二叉树的层次遍历 II.java">
           <value>
             <LeetcodeEditor>
@@ -720,6 +728,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[22]括号生成.java" />
               <option name="questionId" value="22" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[231]2 的幂.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[231]2 的幂.java" />
+              <option name="questionId" value="231" />
             </LeetcodeEditor>
           </value>
         </entry>
