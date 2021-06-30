@@ -63,6 +63,11 @@ public class LC0297_Codec {
         System.out.println(s2);
     }
 
+    /**
+     * 先序方式序列化
+     * @param root
+     * @return
+     */
     public static String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
         Stack<TreeNode> stack = new Stack<>();
@@ -80,6 +85,11 @@ public class LC0297_Codec {
         return sb.substring(0, sb.length() - 1);
     }
 
+    /**
+     * 按照先序序列化结果进行反序列化
+     * @param data
+     * @return
+     */
     public static TreeNode deserialize(String data) {
         if(data == null || data.length() == 0){
             return null;
