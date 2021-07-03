@@ -627,6 +627,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1833]雪糕的最大数量.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1833]雪糕的最大数量.java" />
+              <option name="questionId" value="1961" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[187]重复的DNA序列.java">
           <value>
             <LeetcodeEditor>
@@ -1160,6 +1168,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[44]通配符匹配.java" />
               <option name="questionId" value="44" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[451]根据字符出现频率排序.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[451]根据字符出现频率排序.java" />
+              <option name="questionId" value="451" />
             </LeetcodeEditor>
           </value>
         </entry>
