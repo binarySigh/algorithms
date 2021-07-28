@@ -53,8 +53,8 @@ import java.util.Arrays;
 public class LC1818_MinAbsoluteSumDiff {
     public static void main(String[] args){
         // --> 3
-        int[] nums1 = {1,7,5};
-        int[] nums2 = {2,3,5};
+        /*int[] nums1 = {1,7,5};
+        int[] nums2 = {2,3,5};*/
 
         // --> 0
         /*int[] nums1 = {2,4,6,8,10};
@@ -65,19 +65,73 @@ public class LC1818_MinAbsoluteSumDiff {
         int[] nums2 = {9,3,5,1,7,4};*/
 
         // --> 3156
-        //int[] nums1 = {53,48,14,71,31,55,6,80,28,19,15,40,7,21,69,15,5,42,86,15,11,54,44,62,9,100,2,26,81,87,87,18,45,29,46,100,20,87,49,86,14,74,74,52,52,60,8,25,21,96,7,90,91,42,32,34,55,20,66,36,64,67,44,51,4,46,25,57,84,23,10,84,99,33,51,28,59,88,50,41,59,69,59,65,78,50,78,50,39,91,44,78,90,83,55,5,74,96,77,46};
-        //int[] nums2 = {39,49,64,34,80,26,44,3,92,46,27,88,73,55,66,10,4,72,19,37,40,49,40,58,82,32,36,91,62,21,68,65,66,55,44,24,78,56,12,79,38,53,36,90,40,73,92,14,73,89,28,53,52,46,84,47,51,31,53,22,24,14,83,75,97,87,66,42,45,98,29,82,41,36,57,95,100,2,71,34,43,50,66,52,6,43,94,71,93,61,28,84,7,79,23,48,39,27,48,79};
+        int[] nums1 = {53,48,14,71,31,55,6,80,28,19,15,40,7,21,69,15,5,42,86,15,11,54,44,62,9,100,2,26,81,87,87,18,45,29,46,100,20,87,49,86,14,74,74,52,52,60,8,25,21,96,7,90,91,42,32,34,55,20,66,36,64,67,44,51,4,46,25,57,84,23,10,84,99,33,51,28,59,88,50,41,59,69,59,65,78,50,78,50,39,91,44,78,90,83,55,5,74,96,77,46};
+        int[] nums2 = {39,49,64,34,80,26,44,3,92,46,27,88,73,55,66,10,4,72,19,37,40,49,40,58,82,32,36,91,62,21,68,65,66,55,44,24,78,56,12,79,38,53,36,90,40,73,92,14,73,89,28,53,52,46,84,47,51,31,53,22,24,14,83,75,97,87,66,42,45,98,29,82,41,36,57,95,100,2,71,34,43,50,66,52,6,43,94,71,93,61,28,84,7,79,23,48,39,27,48,79};
         System.out.println(minAbsoluteSumDiff(nums1, nums2));
     }
 
     /**
+     * 解答成功:
+     * 		执行耗时:50 ms,击败了82.39% 的Java用户
+     * 		内存消耗:55.9 MB,击败了65.10% 的Java用户
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int minAbsoluteSumDiff(int[] nums1, int[] nums2){
+        int mod = (int)Math.pow(10, 9) + 7;
+        int[] arr = new int[nums1.length];
+        for(int i = 0; i < nums1.length; i++){
+            arr[i] = nums1[i];
+        }
+        Arrays.sort(arr);
+        int maxDiff = 0;
+        int ans = 0;
+        for(int i = 0; i < nums1.length; i++){
+            int curDiff = Math.abs(nums1[i] - nums2[i]);
+            ans = (ans + curDiff) % mod;
+            int minDiffIdx = getMinDiff(arr, nums2[i]);
+            if(minDiffIdx < arr.length){
+                maxDiff = Math.max(maxDiff, curDiff - (arr[minDiffIdx] - nums2[i]));
+            }
+            if(minDiffIdx > 0){
+                maxDiff = Math.max(maxDiff, curDiff - (nums2[i] - arr[minDiffIdx - 1]));
+            }
+        }
+        return (ans - maxDiff + mod) % mod;
+    }
+
+    /**
+     * 在arr中找到 >= target的最小的数的下标
+     * @param arr
+     * @param target
+     * @return
+     */
+    public static int getMinDiff(int[] arr, int target){
+        int L = 0, R = arr.length - 1;
+        int ans = arr.length;
+        while(L <= R){
+            int mid = L + ((R - L) >> 1);
+            if(arr[mid] < target){
+                L = mid + 1;
+            } else {
+                R = mid - 1;
+                ans = mid;
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 不觉得自己解法思路有问题，只是题意模糊。
+     *  题解思路是找到单个变化最大，以使整体最小。但是本解考虑的是取模后的最小可能
      * 时间复杂度 : N + N*logN + N *logN
      * 空间复杂度 : N(不算排序占用)
      * @param nums1
      * @param nums2
      * @return
      */
-    public static int minAbsoluteSumDiff(int[] nums1, int[] nums2) {
+    public static int minAbsoluteSumDiff1(int[] nums1, int[] nums2) {
         int mod = (int)Math.pow(10, 9) + 7;
         int[] diffs = new int[nums1.length];
         int diffSum = 0;
