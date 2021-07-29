@@ -54,11 +54,7 @@ public class LC0030_FindSubstring {
         int len = words[0].length();
         int maxWin = len * words.length;
         for(String word : words){
-            if(ws.containsKey(word)){
-                ws.put(word, ws.get(word) + 1);
-            } else {
-                ws.put(word, 1);
-            }
+            ws.put(word, ws.getOrDefault(word, 0) + 1);
         }
         List<Integer> ans = new ArrayList<>();
         HashMap<String, Integer> rec = new HashMap<>(ws.size());
