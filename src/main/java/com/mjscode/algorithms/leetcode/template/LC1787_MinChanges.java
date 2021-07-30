@@ -1,4 +1,4 @@
-package com.mjscode.algorithms.leetcode;
+package com.mjscode.algorithms.leetcode.template;
 
 import com.mjscode.algorithms.utils.ArrayUtils;
 
