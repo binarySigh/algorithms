@@ -1587,6 +1587,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[611]有效三角形的个数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[611]有效三角形的个数.java" />
+              <option name="questionId" value="611" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[61]旋转链表.java">
           <value>
             <LeetcodeEditor>
@@ -1872,6 +1880,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[7]整数反转.java" />
               <option name="questionId" value="7" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[802]找到最终的安全状态.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[802]找到最终的安全状态.java" />
+              <option name="questionId" value="820" />
             </LeetcodeEditor>
           </value>
         </entry>
