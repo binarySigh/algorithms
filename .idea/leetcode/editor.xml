@@ -1371,6 +1371,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[457]环形数组是否存在循环.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[457]环形数组是否存在循环.java" />
+              <option name="questionId" value="457" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[458]可怜的小猪.java">
           <value>
             <LeetcodeEditor>
@@ -1944,6 +1952,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[83]删除排序链表中的重复元素.java" />
               <option name="questionId" value="83" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[847]访问所有节点的最短路径.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[847]访问所有节点的最短路径.java" />
+              <option name="questionId" value="877" />
             </LeetcodeEditor>
           </value>
         </entry>
