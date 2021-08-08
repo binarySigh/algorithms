@@ -38,7 +38,7 @@ import java.util.Stack;
  * @author binarySigh
  * @date 2021/8/6 8:59
  */
-public class LC847_ShortestPathLength {
+public class LC0847_ShortestPathLength {
     public static void main(String[] args){
         // --> 4
         int[][] graph = {

@@ -44,7 +44,7 @@ import java.util.PriorityQueue;
  * @author binarySigh
  * @date 2021/7/27 23:03
  */
-public class LC218_GetSkyline {
+public class LC0218_GetSkyline {
     public static void main(String[] args){
         int[][] bs = {
                 {2,9,10},
