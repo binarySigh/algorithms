@@ -19,7 +19,7 @@ public class LC0050_Pow {
             }
         }*/
         double x = 49.2002;
-        int n = 50;
+        int n = Integer.MIN_VALUE;
         System.out.println("myPow : " + myPow(x, n));
         System.out.println("baseSolution : " + baseSolution(x, n));
         System.out.println(myPow(x, n) == baseSolution(x, n));
@@ -32,13 +32,38 @@ public class LC0050_Pow {
         System.out.println(Math.pow(99.0d,Integer.MAX_VALUE));*/
     }
 
+
+    /**
+     * 解答成功:
+     * 		执行耗时:1 ms,击败了73.63% 的Java用户
+     * 		内存消耗:37.5 MB,击败了58.14% 的Java用户
+     * @param x
+     * @param n
+     * @return
+     */
+    public static double myPow(double x, int n){
+        double ans = 1;
+        double pow = x;
+        int i = n == Integer.MIN_VALUE ? -(n + 1) : Math.abs(n);
+        while(i > 0){
+            if((i & 1) == 1){
+                ans *= pow;
+            }
+            pow *= pow;
+            i >>= 1;
+        }
+        ans = n < 0 ? (1 / ans) : ans;
+        ans = n == Integer.MIN_VALUE ? (ans / x) : ans;
+        return ans;
+    }
+
     /**
      * leetcode提交已通过
      * @param x
      * @param n
      * @return
      */
-    public static double myPow(double x, int n) {
+    public static double myPow1(double x, int n) {
         //处理特殊值 0 次幂和 1次幂
         if(n == 0) {
             return 1.0d;
