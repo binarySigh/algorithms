@@ -28,6 +28,21 @@ public class ArrayUtils {
 
     /**
      * 数组打印
+     */
+    public static void showArray(char[] arr){
+        String result = "[";
+        for(int i=0; i < arr.length; i++){
+            if(i != arr.length-1) {
+                result = result + String.valueOf(arr[i]) + ",";
+            } else {
+                result = result + String.valueOf(arr[i]) + "]";
+            }
+        }
+        System.out.println(result);
+    }
+
+    /**
+     * 数组打印
      * @param list
      */
     public static void showArray(ArrayList list){
