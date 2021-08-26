@@ -76,6 +76,37 @@ public class LC0221_MaximalSquare {
         System.out.println(maximalSquare(matrix));
     }
 
+    public static int maximalSquare(char[][] matrix){
+        //dp[i][j] 代表以(i,j)为右下角点的最大正方形边长是多少
+        int[][] dp = new int[matrix.length][matrix[0].length];
+        int max = 0;
+        //第一列
+        for(int i = 0; i < matrix.length; i++){
+            dp[i][0] = matrix[i][0] == '1' ? 1 : 0;
+            max = Math.max(max, dp[i][0]);
+        }
+        //第一行
+        for(int i = 0; i < matrix[0].length; i++){
+            dp[0][i] = matrix[0][i] == '1' ? 1 : 0;
+            max = Math.max(max, dp[0][i]);
+        }
+        //普遍位置
+        // 对于一个普遍位置i,j而言，他能组成的最大正方形边长只与他的 左，上，左上 三个位置有关
+        //  这个关系就是这三个数中的最小值 + 1
+        for(int i = 1; i < matrix.length; i++){
+            for(int j = 1; j < matrix[0].length; j++){
+                if(matrix[i][j] == '0'){
+                    dp[i][j] = 0;
+                } else {
+                    dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
+                    max = Math.max(max, dp[i][j]);
+                }
+            }
+        }
+
+        return max * max;
+    }
+
     /**
      * 解答成功:
      * 		执行耗时:3 ms,击败了99.84% 的Java用户
@@ -83,7 +114,7 @@ public class LC0221_MaximalSquare {
      * @param matrix
      * @return
      */
-    public static int maximalSquare(char[][] matrix){
+    public static int maximalSquare1(char[][] matrix){
         int[] h = new int[matrix[0].length];
         int[] dp = new int[matrix[0].length];
         int max = 0;
