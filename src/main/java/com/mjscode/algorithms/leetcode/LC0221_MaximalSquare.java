@@ -76,6 +76,13 @@ public class LC0221_MaximalSquare {
         System.out.println(maximalSquare(matrix));
     }
 
+    /**
+     * 解答成功:
+     * 		执行耗时:6 ms,击败了68.25% 的Java用户
+     * 		内存消耗:41.7 MB,击败了37.49% 的Java用户
+     * @param matrix
+     * @return
+     */
     public static int maximalSquare(char[][] matrix){
         //dp[i][j] 代表以(i,j)为右下角点的最大正方形边长是多少
         int[][] dp = new int[matrix.length][matrix[0].length];
@@ -103,7 +110,6 @@ public class LC0221_MaximalSquare {
                 }
             }
         }
-
         return max * max;
     }
 
