@@ -499,6 +499,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1480]一维数组的动态和.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1480]一维数组的动态和.java" />
+              <option name="questionId" value="1603" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1482]制作 m 束花所需的最少天数.java">
           <value>
             <LeetcodeEditor>
@@ -592,6 +600,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1583]统计不开心的朋友.java" />
               <option name="questionId" value="1705" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1588]所有奇数长度子数组的和.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1588]所有奇数长度子数组的和.java" />
+              <option name="questionId" value="1693" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -1720,6 +1736,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[526]优美的排列.java" />
               <option name="questionId" value="526" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[528]按权重随机选择.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[528]按权重随机选择.java" />
+              <option name="questionId" value="912" />
             </LeetcodeEditor>
           </value>
         </entry>
