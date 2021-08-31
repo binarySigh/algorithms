@@ -1,4 +1,4 @@
-package com.mjscode.algorithms.leetcode;
+package com.mjscode.algorithms.leetcode.template;
 
 /**
  * //这里有 n 个航班，它们分别从 1 到 n 进行编号。
