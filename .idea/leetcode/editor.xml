@@ -667,6 +667,14 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[165]比较版本号.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[165]比较版本号.java" />
+              <option name="questionId" value="165" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1669]合并两个链表.java">
           <value>
             <LeetcodeEditor>
@@ -1376,6 +1384,14 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[313]超级丑数.java" />
               <option name="questionId" value="313" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[315]计算右侧小于当前元素的个数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[315]计算右侧小于当前元素的个数.java" />
+              <option name="questionId" value="315" />
             </LeetcodeEditor>
           </value>
         </entry>
