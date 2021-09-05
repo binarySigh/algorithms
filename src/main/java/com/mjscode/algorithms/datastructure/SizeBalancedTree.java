@@ -129,7 +129,15 @@ public class SizeBalancedTree<T> {
         return false;
     }
 
-    private void maintain(SBTNode node, SBTNode father){
+    /**
+     * 平衡函数一定要设计成带返回值的，每次返回当前子树调整后的新头部<BR/>
+     * 因为在调整结束后的递归检查平衡性的过程中当前子树头节点有可能会再次被换掉，
+     *      此时需要用 newNode 接住新头，然后串联当前子树父节点<BR/>
+     * @param node 当前待调整子树的头节点
+     * @param father 待调整子树的父节点
+     * @return
+     */
+    private SBTNode maintain(SBTNode node, SBTNode father){
         int leftCounts = getCounts((SBTNode)node.left);
         int rightCounts = getCounts((SBTNode)node.right);
         SBTNode newNode = null;
@@ -140,7 +148,7 @@ public class SizeBalancedTree<T> {
                 newNode = rightRotate(node); // tmp为原来node节点的左孩子
                 // 递归调用maintain,对调整过程中被影响到的节点进行再次检查调整（递归执行的顺序一定是从最下面的结点开始）
                 maintain(node, newNode);
-                maintain(newNode, father);
+                newNode = maintain(newNode, father); //这里一定要接住递归调整后的新头，因为可能会换头
             } else if(getCounts((SBTNode)(node.left.right)) > rightCounts){
                 //LR型 - 对于右子节点而言，它的右侄子节点数大于了它
                 SBTNode preLeftSon = (SBTNode)node.left; //先记录下当前的左子节点
@@ -153,7 +161,7 @@ public class SizeBalancedTree<T> {
                 // 对调整过程中 受到影响的节点进行再次递归检查调整（受影响节点调整顺序 从最底层的结点开始调整，同层的无所谓先后）
                 maintain(preLeftSon, newNode);
                 maintain(node, newNode);
-                maintain(newNode, father);
+                newNode = maintain(newNode, father); //这里一定要接住递归调整后的新头，因为可能会换头
             }
         } else if(leftCounts < rightCounts){
             if(getCounts((SBTNode) node.right.right) > leftCounts){
@@ -161,7 +169,7 @@ public class SizeBalancedTree<T> {
                 // 直接将当前节点左旋
                 newNode = leftRotate(node);
                 maintain(node, newNode);
-                maintain(newNode, father);
+                newNode = maintain(newNode, father); //这里一定要接住递归调整后的新头，因为可能会换头
             } else if(getCounts((SBTNode) node.right.left) > leftCounts){
                 //RL型 - 对于左子节点而言，它的左侄子节点数大于了它
                 SBTNode preRightSon = (SBTNode) node.right;
@@ -170,7 +178,7 @@ public class SizeBalancedTree<T> {
                 newNode = leftRotate(node);
                 maintain(preRightSon, newNode);
                 maintain(node, newNode);
-                maintain(newNode, father);
+                newNode = maintain(newNode, father); //这里一定要接住递归调整后的新头，因为可能会换头
             }
         }
         // 重新串指针的时候需要特别注意，如果newNode为空，说明没有进行平衡性调整，则串指针还是要以node节点来串
@@ -187,6 +195,7 @@ public class SizeBalancedTree<T> {
                 father.right = newNode;
             }
         }
+        return newNode;
     }
 
     /**
