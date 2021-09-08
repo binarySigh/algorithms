@@ -63,7 +63,6 @@ public class LC0174_CalculateMinimumHP {
                 if(dp[i - 1][j] <= dp[i][j - 1]){
 
                 }
-
             }
         }
         return 0;
