@@ -1,4 +1,4 @@
-package com.mjscode.algorithms.leetcode;
+package com.mjscode.algorithms.leetcode.template;
 
 import java.util.ArrayList;
 import java.util.Collections;
