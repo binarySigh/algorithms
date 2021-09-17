@@ -12,6 +12,32 @@ import java.util.TreeSet;
  */
 public class Mod3max {
 
+    public static void main(String[] args) {
+        int N = 9;
+        int testTimes = 10000;
+        System.out.println("-----------Begin----------");
+        /*for (int i = 0; i < testTimes; i++) {
+            int len = (int) (Math.random() * N);
+            int[] arr1 = randomArray(len);
+            int[] arr2 = copyArray(arr1);
+            String ans1 = max1(arr1);
+            String ans2 = mod3max(arr2);
+            if (!ans1.equals(ans2)) {
+                System.out.println("-----Oops-----");
+                ArrayUtils.showArray(arr1);
+                ArrayUtils.showArray(arr2);
+                System.out.println(ans1);
+                System.out.println(ans2);
+                break;
+            }
+        }*/
+        System.out.println("-----------End----------");
+
+        int[] nums = {7,5,2,2};
+        String s = mod3max(nums);
+        System.out.println("s : " + s);
+    }
+
     public static String mod3max(int[] arr){
         PriorityQueue<Integer> mod0 = new PriorityQueue<>((a, b) -> b - a);
         PriorityQueue<Integer> mod1 = new PriorityQueue<>((a, b) -> b - a);
@@ -60,7 +86,7 @@ public class Mod3max {
         while(!mod0.isEmpty()){
             sb.append(mod0.poll());
         }
-        while(!mod1.isEmpty() && !mod0.isEmpty()){
+        while(!mod1.isEmpty() && !mod2.isEmpty()){
             if(mod2.peek() > mod1.peek()){
                 if(cnts1 > 0 || cnts2 + 1 <= mod1.size()){
                     sb.append(mod2.poll());
@@ -134,31 +160,5 @@ public class Mod3max {
             ans[i] = arr[i];
         }
         return ans;
-    }
-
-    public static void main(String[] args) {
-        int N = 9;
-        int testTimes = 10000;
-        System.out.println("-----------Begin----------");
-        /*for (int i = 0; i < testTimes; i++) {
-            int len = (int) (Math.random() * N);
-            int[] arr1 = randomArray(len);
-            int[] arr2 = copyArray(arr1);
-            String ans1 = max1(arr1);
-            String ans2 = mod3max(arr2);
-            if (!ans1.equals(ans2)) {
-                System.out.println("-----Oops-----");
-                ArrayUtils.showArray(arr1);
-                ArrayUtils.showArray(arr2);
-                System.out.println(ans1);
-                System.out.println(ans2);
-                break;
-            }
-        }*/
-        System.out.println("-----------End----------");
-
-        int[] nums = {7,5,2,2};
-        String s = mod3max(nums);
-        System.out.println("s : " + s);
     }
 }
