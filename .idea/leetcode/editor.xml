@@ -483,6 +483,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1436]旅行终点站.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[1436]旅行终点站.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1436]旅行终点站.java" />
+              <option name="questionId" value="1547" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[143]重排链表.java">
           <value>
             <LeetcodeEditor>
@@ -734,6 +743,7 @@
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[166]分数到小数.java">
           <value>
             <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[166]分数到小数.md" />
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[166]分数到小数.java" />
               <option name="questionId" value="166" />
             </LeetcodeEditor>
@@ -1755,6 +1765,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[405]数字转换为十六进制数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[405]数字转换为十六进制数.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[405]数字转换为十六进制数.java" />
+              <option name="questionId" value="405" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[40]组合总和 II.java">
           <value>
             <LeetcodeEditor>
@@ -2020,6 +2039,15 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[516]最长回文子序列.java" />
               <option name="questionId" value="516" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[517]超级洗衣机.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[517]超级洗衣机.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[517]超级洗衣机.java" />
+              <option name="questionId" value="517" />
             </LeetcodeEditor>
           </value>
         </entry>
