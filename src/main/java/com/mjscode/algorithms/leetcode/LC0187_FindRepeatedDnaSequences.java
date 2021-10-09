@@ -31,61 +31,73 @@ import java.util.List;
  * @author binarySigh
  */
 public class LC0187_FindRepeatedDnaSequences {
-    public static void main(String[] args){
-        String s = "AAAAAAAAAAA";
-        ArrayList<String> list = findRepeatedDnaSequencesInMap(s);
-        ArrayUtils.showArray(list);
+
+    public static void main(String[] args) {
+        // --> [AAAAACCCCC, CCCCCAAAAA]
+//  String s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
+
+        String s = "AAAAACCCCCAAAAACCCCC";
+
+//  String s = "AAAAAA";
+        List<String> ans = findRepeatedDnaSequences(s);
+        List<String> com = findRepeatedDnaSequences1(s);
+        System.out.println(ans);
+        System.out.println(com);
     }
 
-    public static ArrayList<String> findRepeatedDnaSequences(String s){
-        //洗掉无效输入
-        if(s == null || s.length() <= 10){
-            return new ArrayList<>();
+    public static List<String> findRepeatedDnaSequences1(String s) {
+        HashMap<String, Integer> map = new HashMap<>();
+        List<String> ans = new ArrayList<>();
+        if(s == null) {
+            return ans;
         }
-        ArrayList<String> list = new ArrayList<>(s.length() - 10);
-
-
-        return list;
-    }
-
-    /**
-     * 可行的优化思路：维护一个长度为10的窗口，这样就不需要每次都嵌套一层10次的循环
-     * 解答成功:
-     * 		执行耗时:82 ms,击败了5.58% 的Java用户
-     * 		内存消耗:53.2 MB,击败了5.04% 的Java用户
-     * @param s
-     * @return
-     */
-    public static ArrayList<String> findRepeatedDnaSequencesInMap(String s){
-        //洗掉无效输入
-        if(s == null || s.length() <= 10){
-            return new ArrayList<>();
-        }
-        //int eor = 0;
         String cur = "";
-        //HashMap<Integer, Integer> map = new HashMap<>(s.length() - 10);
-        HashMap<String, Integer> map = new HashMap<>(s.length() - 10);
-        ArrayList<String> list = new ArrayList<>(s.length() - 10);
+        Integer cnts = null;
         for(int i = 0; i <= s.length() - 10; i++){
-            for(int j = i; j < i + 10; j++){
-                //eor ^= (int)(s.charAt(j));
-                cur += s.charAt(j);
-            }
-            //如果当前十位异或值在map中存在且有效,则往list中加入当前十位的子串，并将map中记录置为无效
-            if(map.containsKey(cur) && map.get(cur) >= 0){
-                list.add(cur);
+            cur = s.substring(i, i + 10);
+            cnts = map.get(cur);
+            if(cnts == null) {
+                map.put(cur, 1);
+            } else if(cnts > 0) {
+                ans.add(cur);
                 map.put(cur, -1);
             }
-            //如果当前十位异或结果不存在，则直接加入
-            else if(!map.containsKey(cur)){
-                map.put(cur, i);
-            }
-            //如果当前异或值存在，但是值是无效状态，则直接略过
-            /*else{
-            }*/
-            //将cur恢复成空串，防止影响下一轮结果
-            cur = "";
         }
-        return list;
+        return ans;
     }
+
+    public static List<String> findRepeatedDnaSequences(String s) {
+        int mod = 3 << 18;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        List<String> ans = new ArrayList<>();
+        if(s == null || s.length() < 10) {
+            return ans;
+        }
+        int cur = 0;
+        int i = 0;
+        for(; i < 10; i++) {
+            cur = cur << 2 | getInt(s.charAt(i));
+        }
+        map.put(cur, 1);
+        for(; i < s.length(); i++) {
+            cur -= (cur & mod);
+            cur = cur << 2 | getInt(s.charAt(i));
+            int cnts = map.getOrDefault(cur, 0);
+            if(cnts == 0){
+                map.put(cur, 1);
+            } else if(cnts == 1) {
+                ans.add(s.substring(i - 9, i + 1));
+                map.put(cur, -1);
+            }
+        }
+        return ans;
+    }
+
+    public static int getInt(char c) {
+        if(c == 'A') return 0;
+        if(c == 'C') return 1;
+        if(c == 'G') return 2;
+        else return 3;
+    }
+
 }

@@ -588,6 +588,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1505]最多 K 次交换相邻数位后得到的最小整数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[1505]最多 K 次交换相邻数位后得到的最小整数.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1505]最多 K 次交换相邻数位后得到的最小整数.java" />
+              <option name="questionId" value="1629" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[151]翻转字符串里的单词.java">
           <value>
             <LeetcodeEditor>
@@ -976,6 +985,7 @@
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[187]重复的DNA序列.java">
           <value>
             <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[187]重复的DNA序列.md" />
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[187]重复的DNA序列.java" />
               <option name="questionId" value="187" />
             </LeetcodeEditor>
@@ -1544,6 +1554,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[310]最小高度树.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[310]最小高度树.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[310]最小高度树.java" />
+              <option name="questionId" value="310" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[312]戳气球.java">
           <value>
             <LeetcodeEditor>
@@ -1609,6 +1628,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[333]最大 BST 子树.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[333]最大 BST 子树.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[333]最大 BST 子树.java" />
+              <option name="questionId" value="333" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[337]打家劫舍 III.java">
           <value>
             <LeetcodeEditor>
@@ -1654,6 +1682,15 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[34]在排序数组中查找元素的第一个和最后一个位置.java" />
               <option name="questionId" value="34" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[352]将数据流变为多个不相交区间.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[352]将数据流变为多个不相交区间.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[352]将数据流变为多个不相交区间.java" />
+              <option name="questionId" value="352" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -1714,6 +1751,15 @@
               <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[371]两整数之和.md" />
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[371]两整数之和.java" />
               <option name="questionId" value="371" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[375]猜数字大小 II.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[375]猜数字大小 II.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[375]猜数字大小 II.java" />
+              <option name="questionId" value="375" />
             </LeetcodeEditor>
           </value>
         </entry>
