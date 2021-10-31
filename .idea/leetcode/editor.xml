@@ -1393,6 +1393,7 @@
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[260]只出现一次的数字 III.java">
           <value>
             <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[260]只出现一次的数字 III.md" />
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[260]只出现一次的数字 III.java" />
               <option name="questionId" value="260" />
             </LeetcodeEditor>
@@ -2215,6 +2216,15 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[4]寻找两个正序数组的中位数.java" />
               <option name="questionId" value="4" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[500]键盘行.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[500]键盘行.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[500]键盘行.java" />
+              <option name="questionId" value="500" />
             </LeetcodeEditor>
           </value>
         </entry>

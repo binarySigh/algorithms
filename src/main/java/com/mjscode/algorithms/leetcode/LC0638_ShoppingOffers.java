@@ -68,7 +68,7 @@ public class LC0638_ShoppingOffers {
         special.add(Arrays.asList(2,2,1,9));
         List<Integer> needs = Arrays.asList(1,2,1);
 
-
+        needs.toArray();
         System.out.println(compare(price, special, needs));
     }
 
