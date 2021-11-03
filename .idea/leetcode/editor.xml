@@ -1091,6 +1091,7 @@
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1]两数之和.java">
           <value>
             <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[1]两数之和.md" />
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1]两数之和.java" />
               <option name="questionId" value="1" />
             </LeetcodeEditor>
@@ -1912,6 +1913,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[407]接雨水 II.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[407]接雨水 II.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[407]接雨水 II.java" />
+              <option name="questionId" value="407" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[40]组合总和 II.java">
           <value>
             <LeetcodeEditor>
@@ -2394,6 +2404,15 @@
             <LeetcodeEditor>
               <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[56]合并区间.java" />
               <option name="questionId" value="56" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[575]分糖果.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[575]分糖果.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[575]分糖果.java" />
+              <option name="questionId" value="575" />
             </LeetcodeEditor>
           </value>
         </entry>

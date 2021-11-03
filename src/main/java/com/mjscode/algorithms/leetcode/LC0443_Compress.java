@@ -4,7 +4,7 @@ package com.mjscode.algorithms.leetcode;
  * @author binarySigh
  * @date 2021/8/21 9:55
  */
-public class LC443_Compress {
+public class LC0443_Compress {
     public static void main(String[] args){
         char[] s = {'a','b','b','b','b','b','b','b','c','b','b','b','b'};
         int n = compress(s);

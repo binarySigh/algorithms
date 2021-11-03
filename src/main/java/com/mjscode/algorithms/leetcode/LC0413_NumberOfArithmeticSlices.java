@@ -29,7 +29,7 @@ package com.mjscode.algorithms.leetcode;
  * @author binarySigh
  * @date 2021/8/10 19:55
  */
-public class LC413_NumberOfArithmeticSlices {
+public class LC0413_NumberOfArithmeticSlices {
     public static void main(String[] args){
         int[] nums = {1,2,3,4};
         //int[] nums = {1,2,3,8,9,10};
